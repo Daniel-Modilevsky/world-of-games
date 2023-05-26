@@ -4,7 +4,7 @@ services:
   app:
     build: .
     ports:
-      - "5050:5050"
+      - "8777:5050"
     volumes:
       - .:/app
     environment:
