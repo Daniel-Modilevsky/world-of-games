@@ -45,5 +45,10 @@ pipeline {
                  sh 'docker kill wog'
            }
         }
+        stage('Deploy to dockerHub'){
+            steps {
+                sh 'docker push danielmodilevsky/wog'
+            }
+        }
     }
 }
