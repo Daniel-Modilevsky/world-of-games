@@ -9,17 +9,13 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                    sh 'docker build -t wog .'
-//                 git branch: 'main', url: 'https://github.com/Daniel-Modilevsky/devops_practice_ex.git'
-//                 sh 'docker rm danielmodilevsky/wog:1.0 '
 //                 sh 'docker-compose up'
             }
         }
         stage('Run docker image') {
             steps {
                 sh 'docker run -d --name wog -p 5050:5050 wog'
-                // docker run -d --name test-auth -p 5002:5000 danielmodilevsky/wog:1.0
                 sh 'sleep 5'
-//                 sh 'curl localhost:5050'
             }
         }
         stage('Check Site Health') {
