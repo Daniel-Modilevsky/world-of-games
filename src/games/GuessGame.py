@@ -12,7 +12,9 @@
 # 4. play - Will call the functions above and play the game. Will return True / False if the user
 # lost or won.
 import numpy as np
-from project.utils.games_utils import *
+
+from src.Scores import add_score
+from src.utils.games_utils import *
 
 
 # Will generate number between 1 to difficulty and save it to secret_number

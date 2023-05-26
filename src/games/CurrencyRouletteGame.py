@@ -18,7 +18,9 @@
 # 3. play - Will call the functions above and play the game. Will return True / False if the user
 # lost or won.
 import numpy as np
-from project.utils.games_utils import *
+
+from src.Scores import add_score
+from src.utils.games_utils import *
 from currency_converter import CurrencyConverter
 
 
@@ -58,6 +60,8 @@ def play(game_over):
         print(f'Your guess is: {GameColors.OKCYAN}{user_guess}{GameColors.ENDC} and the real amount in ILS is: {GameColors.OKCYAN}{real_amount}')
         if interval[0] <= user_guess <= interval[1]:
             win = True
+        if win:
+            add_score(difficulty)
         is_win_output(win)
         win = False
         user_want_to_play = get_boolean('Do you want to play again')

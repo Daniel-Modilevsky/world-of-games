@@ -12,7 +12,9 @@
 # 4. play - Will call the functions above and play the game. Will return True / False if the user lost or won.
 import functools
 import numpy as np
-from project.utils.games_utils import *
+
+from src.Scores import add_score
+from src.utils.games_utils import *
 
 
 #   ----------------------------------------------------------------
@@ -65,6 +67,8 @@ def play(game_over):
         users_choices = get_list_from_user(difficulty)
         print(f"{GameColors.ENDC}The user choices are: {GameColors.OKCYAN}{users_choices}{GameColors.ENDC} and the sequence is: {GameColors.OKCYAN}{sequence}")
         win = is_list_equal(sequence, users_choices)
+        if win:
+            add_score(difficulty)
         is_win_output(win)
         win = False
         user_want_to_play = get_boolean('Do you want to play again')

@@ -1,7 +1,7 @@
-from project.games.CurrencyRouletteGame import calculate_money_interval
-from project.games.GuessGame import compare_results
-from project.games.MemoryGame import is_list_equal
-from project.utils.games_utils import is_in_range
+from src.games.CurrencyRouletteGame import calculate_money_interval
+from src.games.GuessGame import compare_results
+from src.games.MemoryGame import is_list_equal
+from src.utils.games_utils import is_in_range
 
 
 # Tests for the is_in_range function

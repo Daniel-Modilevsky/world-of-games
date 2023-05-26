@@ -1,7 +1,9 @@
 from flask import Flask
-from Utils import SCORES_FILE_NAME, BAD_RETURN_CODE
+
+from src.Utils import SCORES_FILE_NAME, BAD_RETURN_CODE
 
 app = Flask(__name__)
+app.secret_key = "your_secret_key_here"
 
 
 @app.route('/')
@@ -33,6 +35,5 @@ def hello():
         """
 
 
-app.run(host='0.0.0.0', port=30000)
-
+app.run(host='0.0.0.0', port=5050, debug=True)
 
