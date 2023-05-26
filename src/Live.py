@@ -1,7 +1,7 @@
-from project.utils.games_utils import *
-from project.games.GuessGame import play as guess_game
-from project.games.MemoryGame import play as memory_game
-from project.games.CurrencyRouletteGame import play as currency_game
+from src.games.GuessGame import play as guess_game
+from src.games.MemoryGame import play as memory_game
+from src.games.CurrencyRouletteGame import play as currency_game
+from src.utils.games_utils import custom_text, GameColors, get_number_in_range
 
 
 # This function prints out the following text:
