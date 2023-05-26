@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                   sh 'docker build -t wog:1.0 .'
+                   sh 'docker build -t wog .'
 //                 git branch: 'main', url: 'https://github.com/Daniel-Modilevsky/devops_practice_ex.git'
 //                 sh 'docker rm danielmodilevsky/wog:1.0 '
 //                 sh 'docker-compose up'
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Run docker image') {
             steps {
-                sh 'docker run -d --name wog:1.0 -p 5050:5050 wog:1.0'
+                sh 'docker run -d --name wog -p 5050:5050 wog'
                 // docker run -d --name test-auth -p 5002:5000 danielmodilevsky/wog:1.0
                 sh 'sleep 5'
 //                 sh 'curl localhost:5050'
@@ -42,7 +42,7 @@ pipeline {
         stage('Shut down the running image') {
             steps {
                  sh 'docker ps'
-                 sh 'docker kill wog:1.0'
+                 sh 'docker kill wog'
            }
         }
     }
