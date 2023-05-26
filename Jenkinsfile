@@ -25,16 +25,16 @@ pipeline {
         stage('Check Site Health') {
             steps {
                 script {
-                    def siteUrl = 'http://localhost:5050'
-                    def responseCode = sh(
-                        script: "curl --silent --output /dev/null --write-out '%{http_code}' ${siteUrl}",
-                        returnStatus: true
-                    ).trim()
+                    def siteURL = 'http://localhost:5050'
 
-                    if (responseCode == '200') {
-                        echo "Site is up and running!"
+                    // Use curl to check the site availability
+                    def response = sh(script: "curl -I -s -o /dev/null -w '%{http_code}' $siteURL", returnStdout: true).trim()
+
+                    // Check the response status code
+                    if (response == '200') {
+                        echo "Site is up and running"
                     } else {
-                        error "Site is not accessible. HTTP response code: ${responseCode}"
+                        error "Site is not accessible. Status code: $response"
                     }
                 }
            }
