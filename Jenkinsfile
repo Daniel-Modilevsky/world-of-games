@@ -16,7 +16,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'docker run -p 5050:5050 wog:1.0'
+                sh 'docker run -d  --name wog:1.0 -p 5050:5050 wog:1.0'
+                // docker run -d --name test-auth -p 5002:5000 danielmodilevsky/wog:1.0
                 sh 'sleep 5'
                 sh 'curl localhost:5050'
                 sh 'docker kill test-auth'
