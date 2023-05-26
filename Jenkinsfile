@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Run docker image') {
             steps {
-                sh 'docker run -d -p 5050:5050 wog:1.0'
+                sh 'docker run -d -p --name wog:1.0 5050:5050 wog:1.0'
                 // docker run -d --name test-auth -p 5002:5000 danielmodilevsky/wog:1.0
                 sh 'sleep 5'
 //                 sh 'curl localhost:5050'
@@ -41,6 +41,7 @@ pipeline {
         }
         stage('Shut down the running image') {
             steps {
+                 sh 'docker ps'
                  sh 'docker kill wog:1.0'
            }
         }
