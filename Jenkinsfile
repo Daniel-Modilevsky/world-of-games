@@ -13,5 +13,13 @@ pipeline {
                 sh 'docker-compose up'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'sleep 5'
+                sh 'curl localhost:5050'
+                sh 'docker kill test-auth'
+//                 sh 'docker kill test-auth'
+            }
+        }
     }
 }
