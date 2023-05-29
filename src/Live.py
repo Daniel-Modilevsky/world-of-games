@@ -36,4 +36,4 @@ def load_game():
     return
 
 
-
+load_game()
