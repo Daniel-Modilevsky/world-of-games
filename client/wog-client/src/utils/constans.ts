@@ -1,4 +1,4 @@
-import { GameType, ScoreType, GuessGameType, MemoryGameType, CurrencyGameType } from "../types/gameType";
+import { GameType, GuessGameType, MemoryGameType, CurrencyGameType } from "../types/gameType";
 
 export const INITIAL_DIFFICULTY = 3;
 
@@ -18,9 +18,7 @@ export const GAMES:GameType[] = [
 ];
 
 
-export const INITIAL_SCORE: ScoreType = {
-    scoreValue: 25
-};
+export const INITIAL_SCORE = 25;
 
 export const INITIAL_GUESS_GAME: GuessGameType = {
     difficultyAsRange: INITIAL_DIFFICULTY,

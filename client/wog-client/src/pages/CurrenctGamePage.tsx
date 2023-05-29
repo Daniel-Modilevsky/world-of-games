@@ -9,10 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 type CurrencyGamePageProps = {
   difficult: number;
+  setScore: Function;
 };
 
 export const CurrencyGamePage: React.FC<CurrencyGamePageProps> = ({
-  difficult,
+  difficult, setScore
 }: CurrencyGamePageProps) => {
   const [currencyGame, setCurrencyGame] = useState<CurrencyGameType>(
     INITIAL_CURRENCY_GAME
@@ -34,6 +35,7 @@ export const CurrencyGamePage: React.FC<CurrencyGamePageProps> = ({
   const handleUserSubmit = () => {
     setIsUserSuggested(true);
     setIsWin(isUserCurrect());
+    if(isWin) setScore()
   };
 
   const playAgain = () => {

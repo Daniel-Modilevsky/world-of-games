@@ -9,10 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 type MemoryGamePageProps = {
   difficult: number;
+  setScore: Function;
 };
 
 export const MemoryGamePage: React.FC<MemoryGamePageProps> = ({
-  difficult,
+  difficult, setScore
 }: MemoryGamePageProps) => {
   const [memoryGame, setMemoryGame] =
     useState<MemoryGameType>(INITIAL_MEMORY_GAME);
@@ -63,6 +64,7 @@ export const MemoryGamePage: React.FC<MemoryGamePageProps> = ({
   const handleUserSubmit = () => {
     setIsUserSuggested(true);
     setIsWin(isUserCurrect());
+    if(isWin) setScore()
   };
 
   const playAgain = () => {

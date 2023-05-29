@@ -18,7 +18,3 @@ export type CurrencyGameType = {
     dolarValue: number;
     shekelValue: number; 
 }
-
-export type ScoreType = {
-    scoreValue: number;
-}

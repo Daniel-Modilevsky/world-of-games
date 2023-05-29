@@ -9,10 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 type GuessGamePageProps = {
   difficult: number;
+  setScore: Function;
 };
 
 export const GuessGamePage: React.FC<GuessGamePageProps> = ({
-  difficult,
+  difficult, setScore
 }: GuessGamePageProps) => {
   const [guessGame, setGuessGame] = useState<GuessGameType>(INITIAL_GUESS_GAME);
   const [isUserSuggested, setIsUserSuggested] = useState<boolean>(false);
@@ -32,6 +33,7 @@ export const GuessGamePage: React.FC<GuessGamePageProps> = ({
   const handleUserSubmit = () => {
     setIsUserSuggested(true)
     setIsWin(isUserCurrect())
+    if(isWin) setScore()
   }
 
   const playAgain = () => {

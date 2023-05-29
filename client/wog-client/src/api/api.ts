@@ -10,7 +10,7 @@ export const getScore = async (
     const { data } = await axios.get(`${BASE_URL}/score`);
     setScore(data);
   } catch (err) {
-    setScore(INITIAL_SCORE.scoreValue);
+    setScore(INITIAL_SCORE);
   }
 };
 
@@ -19,8 +19,12 @@ export const updateScore = async (
   newScore: number,
   setScore: Function
 ) => {
-  const { data } = await axios.put(`${BASE_URL}/score`, { score: newScore });
-  setScore(data);
+  try{
+    const { data } = await axios.put(`${BASE_URL}/score`, { score: newScore });
+    setScore(data);
+  } catch (err) {
+    setScore(newScore);
+  }
 };
 
 // Guess Game API ----------------------------------------------------------------

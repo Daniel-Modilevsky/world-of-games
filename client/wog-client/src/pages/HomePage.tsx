@@ -12,13 +12,13 @@ import Slider from '@mui/material/Slider';
 
 type HomePageProps = {
   difficult: number,
-  setDifficult: Function
+  setDifficult: Function,
+  score: number,
+  setScore: Function,
 };
 
 
-export const HomePage: React.FC<HomePageProps> = ({difficult, setDifficult }: HomePageProps) => {
-  const [score, setScore] = useState<number>(0);
-
+export const HomePage: React.FC<HomePageProps> = ({difficult, setDifficult, score, setScore }: HomePageProps) => {
   const navigate = useNavigate();
 
   useEffect(()=>{
