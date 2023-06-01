@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Run client image') {
             steps {
-                sh 'docker run -d --name client-app  -p 8080:8080 client-app'
+                sh 'docker run -d --name client-app  -p 8081:8080 client-app'
                 sh 'sleep 5'
             }
         }
