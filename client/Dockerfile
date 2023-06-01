@@ -14,7 +14,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copy the rest of the application code
-COPY ../client .
+COPY . /app
 
 # Build the React app
 RUN npm run build
