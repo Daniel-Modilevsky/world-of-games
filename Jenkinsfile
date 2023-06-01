@@ -8,16 +8,16 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                   sh 'docker build -t wog .'
-//                 sh 'docker-compose up'
+                //    sh 'docker build -t wog .' 
+                   sh 'docker-compose up'
             }
         }
-        stage('Run docker image') {
-            steps {
-                sh 'docker run -d --name wog -p 5050:5050 wog'
-                sh 'sleep 5'
-            }
-        }
+        // stage('Run docker image') {
+        //     steps {
+        //         sh 'docker run -d --name wog -p 5050:5050 wog'
+        //         sh 'sleep 5'
+        //     }
+        // }
         stage('Check Site Health') {
             steps {
                 script {
@@ -38,7 +38,9 @@ pipeline {
         stage('Shut down the running image') {
             steps {
                  sh 'docker ps'
-                 sh 'docker kill wog'
+                 sh 'docker-compose down'
+
+                //  sh 'docker kill wog'
            }
         }
         stage('Deploy to dockerHub'){
