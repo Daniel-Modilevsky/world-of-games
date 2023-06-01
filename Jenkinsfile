@@ -6,7 +6,7 @@ pipeline {
                 sh 'docker --version'
             }
         }
-        stage('Build server Docker Image') {
+        stage('Build compose up Docker Image') {
             steps {
 //                    sh 'docker build -t server-app ./server'
                    sh 'docker-compose up'
