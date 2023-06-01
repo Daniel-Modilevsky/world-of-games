@@ -8,22 +8,27 @@ pipeline {
         }
         stage('Build compose up Docker Image') {
             steps {
-//                    sh 'docker build -t server-app ./server'
-                   sh 'docker-compose up'
+                   sh 'docker build -t server-app ./server'
+//                    sh 'docker-compose up'
             }
         }
-//         stage('Build client Docker Image') {
-//             steps {
-//                    sh 'docker build -t client-app ./client'
-// //                    sh 'docker-compose up'
-//             }
-//         }
-        // stage('Run docker image') {
-        //     steps {
-        //         sh 'docker run -d --name wog -p 5050:5050 wog'
-        //         sh 'sleep 5'
-        //     }
-        // }
+        stage('Build client Docker Image') {
+            steps {
+                   sh 'docker build -t client-app ./client'
+            }
+        }
+        stage('Run server image') {
+            steps {
+                sh 'docker run -d --name server-app  -p 5050:5050 server-app'
+                sh 'sleep 5'
+            }
+        }
+        stage('Run client image') {
+            steps {
+                sh 'docker run -d --name client-app  -p 8080:8080 client-app'
+                sh 'sleep 5'
+            }
+        }
 //         stage('Check Site Health') {
 //             steps {
 //                 script {
