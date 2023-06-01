@@ -6,10 +6,16 @@ pipeline {
                 sh 'docker --version'
             }
         }
-        stage('Build Docker Image') {
+        stage('Build server Docker Image') {
             steps {
-                //    sh 'docker build -t wog .' 
-                   sh 'docker-compose up'
+                   sh 'docker build -t server-app ./server'
+//                    sh 'docker-compose up'
+            }
+        }
+        stage('Build client Docker Image') {
+            steps {
+                   sh 'docker build -t client-app ./client'
+//                    sh 'docker-compose up'
             }
         }
         // stage('Run docker image') {
