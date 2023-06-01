@@ -8,16 +8,16 @@ pipeline {
         }
         stage('Build server Docker Image') {
             steps {
-                   sh 'docker build -t server-app ./server'
-//                    sh 'docker-compose up'
+//                    sh 'docker build -t server-app ./server'
+                   sh 'docker-compose up'
             }
         }
-        stage('Build client Docker Image') {
-            steps {
-                   sh 'docker build -t client-app ./client'
-//                    sh 'docker-compose up'
-            }
-        }
+//         stage('Build client Docker Image') {
+//             steps {
+//                    sh 'docker build -t client-app ./client'
+// //                    sh 'docker-compose up'
+//             }
+//         }
         // stage('Run docker image') {
         //     steps {
         //         sh 'docker run -d --name wog -p 5050:5050 wog'
