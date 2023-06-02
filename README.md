@@ -1,4 +1,5 @@
-# World Of Games 2022
+# World Of Games 
+
 
 This is a simple program that offers three different games to play:
 
@@ -18,7 +19,11 @@ In the Currency Roulette, the program will generate a random amount of USD, and 
 
 ## 🏁 Technology Stack
 
-- c#
+- Clien - React, SCSS, TS
+- Server - Flask, Python
+- DB - SQL
+- Test - Jest, Pytest, selenium, Cypress
+- Devops - Jenkins, Docker
 
 ## 🏃‍ Local Installation
 

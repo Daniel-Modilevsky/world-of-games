@@ -8,27 +8,29 @@ pipeline {
         }
         stage('Build compose up Docker Image') {
             steps {
-                   sh 'docker build -t server-app ./server'
-//                    sh 'docker-compose up'
+                //    sh 'docker build -t server-app ./server'
+                   sh 'docker-compose up -d'
+                   sh 'docker network create frontend_network'
+                   sh 'docker network create backend_network'
             }
         }
-        stage('Build client Docker Image') {
-            steps {
-                   sh 'docker build -t client-app ./client'
-            }
-        }
-        stage('Run server image') {
-            steps {
-                sh 'docker run -d --name server-app  -p 5050:5050 server-app'
-                sh 'sleep 5'
-            }
-        }
-        stage('Run client image') {
-            steps {
-                sh 'docker run -d --name client-app  -p 3000:3000 client-app'
-                sh 'sleep 5'
-            }
-        }
+        // stage('Build client Docker Image') {
+        //     steps {
+        //            sh 'docker build -t client-app ./client'
+        //     }
+        // }
+        // stage('Run server image') {
+        //     steps {
+        //         sh 'docker run -d --name server-app  -p 5050:5050 server-app'
+        //         sh 'sleep 5'
+        //     }
+        // }
+        // stage('Run client image') {
+        //     steps {
+        //         sh 'docker run -d --name client-app  -p 3000:3000 client-app'
+        //         sh 'sleep 5'
+        //     }
+        // }
         stage('Check Site Health') {
             steps {
                 script {
@@ -49,9 +51,9 @@ pipeline {
         stage('Shut down the running image') {
             steps {
                  sh 'docker ps'
-//                  sh 'docker-compose down'
-                 sh 'docker kill client-app'
-                 sh 'docker kill server-app'
+                 sh 'docker-compose down'
+                //  sh 'docker kill client-app'
+                //  sh 'docker kill server-app'
            }
         }
         stage('Deploy to dockerHub'){
